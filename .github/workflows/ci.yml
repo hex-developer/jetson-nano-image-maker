@@ -58,7 +58,7 @@ jobs:
           prerelease: false
           release_name: ${{ github.sha1 }}
           tag_name: ${{ github.ref }}
-          body_path: README.md
+          body: ""
         env: 
           GITHUB_TOKEN: ${{ github.token }}
           
