@@ -33,6 +33,8 @@ if [ ! $JETSON_NANO_BOARD ]; then
 	exit 1
 fi
 
+sed -i "s/\/dev\/mmcblk0p1/\/dev\/sda1/g" $JETSON_ROOTFS_DIR/boot/extlinux/extlinux.conf
+
 printf "\e[32mBuild the image ...\n"
 
 # Create the build dir if it does not exists
