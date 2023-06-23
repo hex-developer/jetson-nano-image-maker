@@ -51,6 +51,7 @@ RUN apt install -y -o Dpkg::Options::="--force-overwrite" \
     python3-jetson-gpio
 
 RUN rm -rf /opt/nvidia/l4t-packages
+RUN apt install network-manager
 
 COPY root/ /
 
