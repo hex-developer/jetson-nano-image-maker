@@ -51,5 +51,6 @@ jobs:
       
       - name: Release image
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: jetson.img
