@@ -52,4 +52,4 @@ jobs:
       - name: Release image
         uses: softprops/action-gh-release@v1
         with:
-          files: jetson-nano-r300.img
+          files: jetson.img
