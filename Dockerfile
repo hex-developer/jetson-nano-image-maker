@@ -52,7 +52,7 @@ RUN apt install -y -o Dpkg::Options::="--force-overwrite" \
 
 RUN rm -rf /opt/nvidia/l4t-packages
 
-RUN apt install network-manager
+RUN apt install -y network-manager
 
 COPY root/ /
 
