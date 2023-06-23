@@ -53,7 +53,7 @@ RUN apt install -y -o Dpkg::Options::="--force-overwrite" \
 RUN rm -rf /opt/nvidia/l4t-packages
 
 RUN apt install -y network-manager
-RUN apt install -y build-essential git dkms bc
+RUN apt install -y build-essential git dkms bc linux-headers-$(uname -r)
 RUN git clone https://github.com/morrownr/8821cu-20210916.git && cd 8821cu-20210916 && ./install-driver.sh && cd .. && rm -rf 8821cu-20210916
 
 COPY root/ /
