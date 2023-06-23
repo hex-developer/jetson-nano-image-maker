@@ -61,6 +61,7 @@ jobs:
           body: ""
         env: 
           GITHUB_TOKEN: ${{ github.token }}
+
           
       - name: Upload image
         uses: actions/upload-release-asset@v1
