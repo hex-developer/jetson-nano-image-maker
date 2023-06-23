@@ -48,3 +48,8 @@ jobs:
           name: ${{ matrix.board }}-r${{ matrix.revision }}
           path: |
             jetson.img
+      
+      - name: Release image
+        uses: softprops/action-gh-release@v1
+        with:
+          files: jetson-nano-r300.img
