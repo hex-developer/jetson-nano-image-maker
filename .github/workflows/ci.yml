@@ -2,6 +2,7 @@ name: CI
 
 on:
   push:
+    branches: main
     tags:
       - "*"
   pull_request:
@@ -24,6 +25,15 @@ jobs:
       JETSON_NANO_REVISION: ${{ matrix.revision }}
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Increment tag
+        id: inc_tag
+        run: echo ::set-output name=tag::$(( $(git describe --tags --abbrev=0) + 1))
+        
+      - name: Tag code
+        run: |
+          git tag ${{ steps.inc_tag.outputs.tag }} $(git rev-parse HEAD)
+          git push origin ${{ steps.inc_tag.outputs.tag }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -57,7 +67,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: ${{ github.sha1 }}
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ steps.inc_tag.outputs.tag }}
           body: ""
         env: 
           GITHUB_TOKEN: ${{ github.token }}
