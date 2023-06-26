@@ -21,7 +21,7 @@ jobs:
         run: echo ::set-output name=tag::$(git describe --tags)
       - name: Increment tag
         id: inc_tag
-        run: echo ::set-output name=tag::$(echo ${{ steps.get_tag.outputs.tag }} | jq -r 'split(".") | map(tonumber) | .[2]+=1 | map(tostring) | join(".")')
+        run: echo ::set-output name=tag::$(echo ${GITHUB_REF#refs/tags/} | awk -F. -v OFS=. '{$NF++;print}')
       - name: Tag code
         run: |
           git tag ${{ steps.inc_tag.outputs.tag }}
