@@ -25,6 +25,8 @@ jobs:
       JETSON_NANO_REVISION: ${{ matrix.revision }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
       - name: Increment tag
         id: inc_tag
