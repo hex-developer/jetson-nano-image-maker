@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Get current tag
         id: get_tag
-        run: echo ::set-output name=tag::$(git describe --tags --abbrev=0)
+        run: echo ::set-output name=tag::$(git describe --tags)
       - name: Increment tag
         id: inc_tag
         run: echo ::set-output name=tag::$(echo ${{ steps.get_tag.outputs.tag }} | jq -r 'split(".") | map(tonumber) | .[2]+=1 | map(tostring) | join(".")')
