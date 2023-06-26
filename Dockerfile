@@ -54,7 +54,7 @@ RUN rm -rf /opt/nvidia/l4t-packages
 
 RUN apt install -y network-manager nvidia-container-runtime
 RUN apt install -y build-essential git dkms bc rfkill nano linux-headers-$(uname -r)
-RUN git clone https://github.com/morrownr/8821cu-20210916.git
+RUN git clone https://github.com/brektrou/rtl8821CU.git
 
 COPY root/ /
 
