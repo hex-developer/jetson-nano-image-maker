@@ -8,9 +8,33 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - board: jetson-nano
+            revision: 300
+
+    env:
+      JETSON_ROOTFS_DIR: /tmp/jetson-builder/rootfs
+      JETSON_BUILD_DIR: /tmp/jetson-builder/build
+      JETSON_NANO_BOARD: ${{ matrix.board }}
+      JETSON_NANO_REVISION: ${{ matrix.revision }}
+      
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Increment tag
+        id: inc_tag
+        run: echo ::set-output name=tag::$(( $(git describe --tags --abbrev=0) + 1))
+        
+      - name: Tag code
+        run: |
+          git tag ${{ steps.inc_tag.outputs.tag }} $(git rev-parse HEAD)
+          git push origin ${{ steps.inc_tag.outputs.tag }}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
