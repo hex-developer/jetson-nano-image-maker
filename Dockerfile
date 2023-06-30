@@ -53,12 +53,13 @@ RUN apt install -y -o Dpkg::Options::="--force-overwrite" \
 RUN rm -rf /opt/nvidia/l4t-packages
 
 RUN apt install -y network-manager nvidia-container-runtime
-RUN apt install -y git rfkill nano linux-headers-$(uname -r)
+RUN apt install -y git rfkill nano curl linux-headers-$(uname -r)
 RUN apt install -y task-lxqt-desktop
+RUN curl -fsSL https://get.docker.com | sh
 
 COPY root/ /
 
 RUN useradd -ms /bin/bash jetson
 RUN echo 'jetson:jetson' | chpasswd
 
-RUN usermod -a -G sudo jetson
+RUN usermod -a -G sudo jetson && usermod -aG docker jetson
