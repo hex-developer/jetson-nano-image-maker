@@ -40,13 +40,13 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
         
-      - name: Cache Docker layers
-        uses: actions/cache@v2
-        with:
-          path: /var/lib/docker
-          key: ${{ runner.os }}-docker
-          restore-keys: |
-            ${{ runner.os }}-docker
+#      - name: Cache Docker layers
+#        uses: actions/cache@v2
+#        with:
+#          path: /var/lib/docker
+#          key: ${{ runner.os }}-docker
+#          restore-keys: |
+#            ${{ runner.os }}-docker
 
       - name: Build docker image
         run: docker buildx build --platform linux/arm64 -t jetson-nano-image .
