@@ -11,18 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Increment tag
-        id: inc_tag
-        run: echo ::set-output name=tag::$(( $(git describe --tags --abbrev=0) + 1))
-
-      - name: Tag code
-        run: |
-          git tag ${{ steps.inc_tag.outputs.tag }} $(git rev-parse HEAD)
-          git push origin ${{ steps.inc_tag.outputs.tag }}
+      - name: Check out code
+        uses: actions/checkout@v3
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
