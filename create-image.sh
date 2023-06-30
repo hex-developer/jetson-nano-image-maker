@@ -53,7 +53,7 @@ if [ ! "$(ls -A $JETSON_BUILD_DIR)" ]; then
                 # Without it nVidia's script fails to copy any symlinks from rootfs into recovery image which crashes the whole image creation process.
                 sed -i 's/cp -f/cp -af/g' "$JETSON_BUILD_DIR/Linux_for_Tegra/tools/ota_tools/version_upgrade/ota_make_recovery_img_dtb.sh"
                 ;;
-            *32.6*)
+            *32.7*)
                 # When preallocating loopback image space for root, nvidia's script uses ((rootfs_size + (rootfs_size /10))
                 # In case of a 400MiB rootfs, this causes the same script to fail copying rootfs into the root image.
                 # So we arbitraryly preallocate extra 128MiB ((rootfs_size + 128MiB + (rootfs_size / 10))
