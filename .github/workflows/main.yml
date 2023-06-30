@@ -44,4 +44,4 @@ jobs:
           context: .
           push: true
           platforms: arm64
-          tags: latest
+          tags: hex-developer/main:latest
