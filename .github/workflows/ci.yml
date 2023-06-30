@@ -57,6 +57,10 @@ jobs:
           docker rm nano-rootfs
           mkdir -p /tmp/jetson-builder/rootfs
           sudo tar --same-owner -xf rootfs.tar -C /tmp/jetson-builder/rootfs
+      
+      - name: Debug free space
+        run: |
+          df -h
 
       - name: Create jetson.img
         run: |
