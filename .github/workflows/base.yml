@@ -1,4 +1,4 @@
-name: Create base image
+name: 1. Create base image
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           platforms: arm64
-          tags: hex-developer/base:latest
+          tags: ghcr.io/hex-developer/base:latest
 
       - name: Move cache
         run: |

@@ -1,4 +1,4 @@
-name: Add extra stuff
+name: 2. Add extra stuff
 
 on:
   push:
@@ -34,4 +34,4 @@ jobs:
           context: .
           push: true
           platforms: arm64
-          tags: hex-developer/main:latest
+          tags: ghcr.io/hex-developer/main:latest
