@@ -54,6 +54,7 @@ RUN rm -rf /opt/nvidia/l4t-packages
 
 RUN apt install -y network-manager nvidia-container-runtime
 RUN apt install -y git rfkill nano linux-headers-$(uname -r)
+RUN apt install -y task-lxqt-desktop
 
 COPY root/ /
 
