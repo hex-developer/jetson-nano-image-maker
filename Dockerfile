@@ -54,7 +54,7 @@ RUN rm -rf /opt/nvidia/l4t-packages
 
 RUN apt install -y network-manager nvidia-container-runtime
 RUN apt install -y git rfkill nano curl linux-headers-$(uname -r)
-RUN apt install -y lxqt sddm
+RUN DEBIAN_FRONTEND=noninteractive apt install -y lxqt sddm
 RUN curl -fsSL https://get.docker.com | sh
 
 COPY root/ /
