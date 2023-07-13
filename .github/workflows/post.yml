@@ -53,7 +53,7 @@ jobs:
         run: |
           sudo apt install -y libxml2-utils
           sudo -E ./create-image.sh
-          xz jetson.img
+          sudo xz jetson.img
 
       - name: Create release
         uses: actions/create-release@v1
