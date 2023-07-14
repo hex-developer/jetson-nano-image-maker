@@ -3,4 +3,5 @@ FROM ghcr.io/hex-developer/base:latest
 #RUN DEBIAN_FRONTEND=noninteractive apt install -y lxqt sddm
 RUN curl -fsSL https://get.docker.com | sh
 RUN DEBIAN_FRONTEND=noninteractive apt install -y xinit x11-apps openbox
-RUN cp --symbolic-link /usr/lib/aarch64-linux-gnu/tegra/*.so /usr/lib/aarch64-linux-gnu
+COPY symlink.sh symlink.sh
+RUN chmod +x symlink.sh && ./symlink.sh && rm -rf symlink.sh
